@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Game></Game>
     </div>
   );
 }
+
+const Game: React.FC = () => {
+  return <Board numRows={10} numCols={10}></Board>;
+};
+
+const Board: React.FC<{ numRows: number; numCols: number }> = ({
+  numRows,
+  numCols,
+}) => {
+  const row = [];
+  for (let i = 0; i < numCols; i++) {
+    row.push(Cell);
+  }
+  return (
+    <div>
+      {row.map((C) => (
+        <C></C>
+      ))}
+      <Cell></Cell>
+    </div>
+  );
+};
+
+const Cell: React.FC = () => {
+  const [isAlive, setIsAlive] = useState(true);
+  const handleClick = () => {
+    setIsAlive(!isAlive);
+  };
+
+  return (
+    <div onClick={handleClick}>
+      <p>{isAlive ? "O" : "X"}</p>
+    </div>
+  );
+};
 
 export default App;
