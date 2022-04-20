@@ -9,6 +9,7 @@ function App() {
 }
 
 const Game: React.FC = () => {
+  // TODO: control speed
   return <Board numRows={10} numCols={10}></Board>;
 };
 
@@ -16,16 +17,23 @@ const Board: React.FC<{ numRows: number; numCols: number }> = ({
   numRows,
   numCols,
 }) => {
-  const row = [];
+  let col: any[] = [];
   for (let i = 0; i < numCols; i++) {
-    row.push(Cell);
+    col.push(Cell);
+  }
+  const row = [];
+  for (let j = 0; j < numRows; j++) {
+    row.push(col);
   }
   return (
-    <div className="bg-sky-400">
-      {row.map((C) => (
-        <C></C>
+    <div>
+      {row.map(() => (
+        <div className="flex">
+          {col.map((C) => (
+            <C></C>
+          ))}
+        </div>
       ))}
-      <Cell></Cell>
     </div>
   );
 };
@@ -35,10 +43,11 @@ const Cell: React.FC = () => {
   const handleClick = () => {
     setIsAlive(!isAlive);
   };
-
   return (
     <div onClick={handleClick}>
-      <p>{isAlive ? "O" : "X"}</p>
+      <p className="bg-sky-900 text-center text-sky-300 h-8 w-8">
+        {isAlive ? "▇" : "-"}
+      </p>
     </div>
   );
 };
