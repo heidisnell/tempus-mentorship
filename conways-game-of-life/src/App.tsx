@@ -21,7 +21,7 @@ const Board: React.FC<{ numRows: number; numCols: number }> = ({
     row.push(Cell);
   }
   return (
-    <div>
+    <div className="bg-sky-400">
       {row.map((C) => (
         <C></C>
       ))}
