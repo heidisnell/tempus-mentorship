@@ -10,27 +10,24 @@ function App() {
 
 const Game: React.FC = () => {
   // TODO: control speed
-  return <Board numRows={10} numCols={10}></Board>;
-};
+  const [generation, setGeneration] = useState<boolean[][]>(
+    Array(10).fill(Array(10).fill(false))
+  );
 
-const Board: React.FC<{ numRows: number; numCols: number }> = ({
-  numRows,
-  numCols,
-}) => {
-  let col: any[] = [];
-  for (let i = 0; i < numCols; i++) {
-    col.push(Cell);
-  }
-  const row = [];
-  for (let j = 0; j < numRows; j++) {
-    row.push(col);
-  }
+  console.log(generation);
+
   return (
     <div>
-      {row.map(() => (
-        <div className="flex">
-          {col.map((C) => (
-            <C></C>
+      {generation.map((row, rowNum) => (
+        <div className="flex" key={`row${rowNum}`}>
+          {row.map((isAlive, colNum) => (
+            <Cell
+              isAlive={isAlive}
+              toggleIsAlive={() => {
+                console.log("clicked");
+              }}
+              key={`row${rowNum}col${colNum}`}
+            ></Cell>
           ))}
         </div>
       ))}
@@ -38,10 +35,12 @@ const Board: React.FC<{ numRows: number; numCols: number }> = ({
   );
 };
 
-const Cell: React.FC = () => {
-  const [isAlive, setIsAlive] = useState(true);
+const Cell: React.FC<{ isAlive: boolean; toggleIsAlive: () => void }> = ({
+  isAlive,
+  toggleIsAlive,
+}) => {
   const handleClick = () => {
-    setIsAlive(!isAlive);
+    toggleIsAlive();
   };
   return (
     <div onClick={handleClick}>
