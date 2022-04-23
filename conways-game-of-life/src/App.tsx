@@ -10,6 +10,7 @@ function App() {
 
 const Game: React.FC = () => {
   // TODO: control speed
+  // TODO: wraparound edges
   const [generation, setGeneration] = useState<boolean[][]>(
     Array(10).fill(Array(10).fill(false))
   );
@@ -24,7 +25,7 @@ const Game: React.FC = () => {
             <Cell
               isAlive={isAlive}
               toggleIsAlive={() => {
-                console.log("clicked");
+                console.log(`clicked row${rowNum}col${colNum}`);
               }}
               key={`row${rowNum}col${colNum}`}
             ></Cell>
