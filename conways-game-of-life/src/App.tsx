@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import deepClone from "lodash";
 
 function App() {
   return (
@@ -8,14 +9,69 @@ function App() {
   );
 }
 
+function getNumNeighbors(row: number, col: number) {
+  //   // input current generation?
+  //   let numNeighbors = 0;
+  //   for (let r = Math.max(0, row - 1); r <= Math.min(numRows - 1, row + 1); r++) {
+  //     for (
+  //       let c = Math.max(0, col - 1);
+  //       c <= Math.min(numCols - 1, col + 1);
+  //       c++
+  //     ) {
+  //       if (r === row && c === col) {
+  //         continue;
+  //       } else if (generation[r][c] === true) {
+  //         numNeighbors++;
+  //       }
+  //     }
+  //   }
+  //   return numNeighbors;
+}
+function setNeighborArray() {
+  // input current generation
+}
+function createNextGeneration() {
+  // input neighbor array and current generation
+}
+
+type GameAction = {
+  type: "toggle";
+  rowNum: number;
+  colNum: number;
+};
+function reducer(state: boolean[][], action: GameAction) {
+  const { type, rowNum, colNum } = action;
+  switch (type) {
+    case "toggle":
+      const newState: boolean[][] = deepClone(state);
+      const aliveness = !state[rowNum][colNum];
+      newState[rowNum][colNum] = aliveness;
+      return newState;
+    default:
+      throw new Error();
+  }
+}
+
 const Game: React.FC = () => {
-  // TODO: control speed
-  // TODO: wraparound edges
-  const [generation, setGeneration] = useState<boolean[][]>(
-    Array(10).fill(Array(10).fill(false))
+  const numRows = 10;
+  const numCols = 10;
+  const [generation, dispatch] = useReducer(
+    reducer,
+    Array(numRows).fill(Array(numCols).fill(false))
   );
 
-  console.log(generation);
+  // const [generation, setGeneration] = useState<boolean[][]>(
+  //   ,Array(numRows).fill(Array(numCols).fill(false))
+  // );
+
+  function toggleIsAlive(rowNum: number, colNum: number) {
+    setGeneration((previousGeneration) => {
+      previousGeneration[rowNum][colNum] = !previousGeneration[rowNum][colNum];
+      console.log({ previousGeneration });
+      return previousGeneration;
+    });
+    console.log(generation);
+  }
 
   return (
     <div>
@@ -24,9 +80,7 @@ const Game: React.FC = () => {
           {row.map((isAlive, colNum) => (
             <Cell
               isAlive={isAlive}
-              toggleIsAlive={() => {
-                console.log(`clicked row${rowNum}col${colNum}`);
-              }}
+              toggleIsAlive={() => toggleIsAlive(rowNum, colNum)}
               key={`row${rowNum}col${colNum}`}
             ></Cell>
           ))}
@@ -40,6 +94,7 @@ const Cell: React.FC<{ isAlive: boolean; toggleIsAlive: () => void }> = ({
   isAlive,
   toggleIsAlive,
 }) => {
+  // const [isAlive, setIsAlive] = useState(false)
   const handleClick = () => {
     toggleIsAlive();
   };
