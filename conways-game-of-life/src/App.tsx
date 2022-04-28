@@ -66,8 +66,6 @@ const Game: React.FC = () => {
     Array(numRows).fill(Array(numCols).fill(false))
   );
 
-  dispatch({ type: "toggle", rowNum: 0, colNum: 0 });
-
   return (
     <div>
       {generation.map((row, rowNum) => (
