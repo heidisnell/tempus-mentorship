@@ -36,16 +36,18 @@ function createNextGeneration() {
   // input neighbor array and current generation
 }
 
-function reducer(state: boolean[][], action: GameAction) {
+function reducer(generation: boolean[][], action: GameAction) {
   const { type, rowNum, colNum } = action;
   switch (type) {
     case "toggle":
-      // const newState: boolean[][] = deepClone(state);
-      let newState: boolean[][] = state;
-      newState[rowNum][colNum] = !state[rowNum][colNum];
-      console.log({ state });
-      console.log({ newState });
-      return newState;
+      // const nextGeneration: boolean[][] = deepClone(generation);
+      let nextGeneration: boolean[][] = generation;
+      nextGeneration[rowNum][colNum] = !generation[rowNum][colNum];
+      console.log(`${generation}`);
+      console.log({ nextGeneration });
+      console.log(`${nextGeneration}`);
+      return nextGeneration;
+    // return { ...state, state: nextGeneration };
     default:
       throw new Error();
   }
