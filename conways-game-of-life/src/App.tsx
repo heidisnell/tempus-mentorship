@@ -41,9 +41,10 @@ function reducer(state: boolean[][], action: GameAction) {
   switch (type) {
     case "toggle":
       // const newState: boolean[][] = deepClone(state);
-      const newState: boolean[][] = state;
-      const aliveness = !state[rowNum][colNum];
-      newState[rowNum][colNum] = aliveness;
+      let newState: boolean[][] = state;
+      newState[rowNum][colNum] = !state[rowNum][colNum];
+      console.log({ state });
+      console.log({ newState });
       return newState;
     default:
       throw new Error();
@@ -65,22 +66,7 @@ const Game: React.FC = () => {
     Array(numRows).fill(Array(numCols).fill(false))
   );
 
-  // const [generation, setGeneration] = useState<boolean[][]>(
-  //   ,Array(numRows).fill(Array(numCols).fill(false))
-  // );
-
   dispatch({ type: "toggle", rowNum: 0, colNum: 0 });
-
-  function toggleIsAlive(rowNum: number, colNum: number) {
-    setGeneration((previousGeneration) => {
-      // dont take in old state. generate new state instead...
-      // previousGeneration[rowNum][colNum] = !previousGeneration[rowNum][colNum];
-      let newGeneration: boolean[][] = previousGeneration;
-      newGeneration[rowNum][colNum] = !previousGeneration[rowNum][colNum];
-      console.log({ newGeneration });
-      return newGeneration;
-    });
-  }
 
   return (
     <div>
@@ -89,7 +75,9 @@ const Game: React.FC = () => {
           {row.map((isAlive, colNum) => (
             <Cell
               isAlive={isAlive}
-              toggleIsAlive={() => toggleIsAlive(rowNum, colNum)}
+              toggleIsAlive={() =>
+                dispatch({ type: "toggle", rowNum: rowNum, colNum: colNum })
+              }
               key={`row${rowNum}col${colNum}`}
             ></Cell>
           ))}
