@@ -1,8 +1,9 @@
-import React, { useReducer, useState } from "react";
-import deepClone from "lodash";
+import React, { useEffect, useReducer, useState } from "react";
+import * as _ from "lodash";
 
 // APP -----------------------------------------------
 function App() {
+  console.log("app render");
   return (
     <div className="App">
       <Game></Game>
@@ -36,18 +37,14 @@ function createNextGeneration() {
   // input neighbor array and current generation
 }
 
-function reducer(generation: boolean[][], action: GameAction) {
+function reducer(state: boolean[][], action: GameAction) {
   const { type, rowNum, colNum } = action;
   switch (type) {
     case "toggle":
-      // const nextGeneration: boolean[][] = deepClone(generation);
-      let nextGeneration: boolean[][] = generation;
-      nextGeneration[rowNum][colNum] = !generation[rowNum][colNum];
-      console.log(`${generation}`);
-      console.log({ nextGeneration });
-      console.log(`${nextGeneration}`);
+      let nextGeneration: boolean[][] = _.cloneDeep(state);
+      nextGeneration[rowNum][colNum] = !state[rowNum][colNum];
+      console.log({ reducerGen: nextGeneration });
       return nextGeneration;
-    // return { ...state, state: nextGeneration };
     default:
       throw new Error();
   }
@@ -63,13 +60,28 @@ type GameAction = {
 const Game: React.FC = () => {
   const numRows = 10;
   const numCols = 10;
+  let [generationNum, setGenerationNum] = useState(0);
+
   const [generation, dispatch] = useReducer(
     reducer,
-    Array(numRows).fill(Array(numCols).fill(false))
+    Array(numRows)
+      .fill(0)
+      .map((_) => {
+        return new Array(numCols).fill(false);
+      })
   );
+
+  console.log("render");
+  useEffect(() => {
+    console.log("here");
+    setInterval(() => {
+      setGenerationNum((prev) => prev + 1);
+    }, 1000);
+  }, []);
 
   return (
     <div>
+      <div>{generationNum}</div>
       {generation.map((row, rowNum) => (
         <div className="flex" key={`row${rowNum}`}>
           {row.map((isAlive, colNum) => (
