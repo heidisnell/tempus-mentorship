@@ -75,9 +75,9 @@ const Game: React.FC = () => {
   useEffect(() => {
     console.log("here");
     setInterval(() => {
-      setGenerationNum((prev) => prev + 1);
+      setGenerationNum(generationNum + 1);
     }, 1000);
-  }, []);
+  });
 
   return (
     <div>
