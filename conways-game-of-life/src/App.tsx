@@ -74,10 +74,12 @@ const Game: React.FC = () => {
   console.log("render");
   useEffect(() => {
     console.log("here");
-    setInterval(() => {
-      setGenerationNum((prev) => prev + 1);
+    const interval = setInterval(() => {
+      setGenerationNum(generationNum + 1);
     }, 1000);
-  }, []);
+
+    return () => clearInterval(interval);
+  });
 
   return (
     <div>
@@ -104,7 +106,6 @@ const Cell: React.FC<{ isAlive: boolean; toggleIsAlive: () => void }> = ({
   isAlive,
   toggleIsAlive,
 }) => {
-  // const [isAlive, setIsAlive] = useState(false)
   const handleClick = () => {
     toggleIsAlive();
   };
