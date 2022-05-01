@@ -5,7 +5,7 @@
 Implementing [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) using/learning React, [TailwindCSS](https://tailwindcss.com/), and TypeScript.
 
 **Other stuff I learned:**  
-Prefeerence for [yarn](https://yarnpkg.com/getting-started/install)  
+Preference for [yarn](https://yarnpkg.com/getting-started/install)  
 Why [Next.js](https://www.youtube.com/watch?v=BILxV_vrZO0)?
 
 **Other helpful links:**  
