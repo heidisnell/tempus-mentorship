@@ -9,7 +9,7 @@ Preference for [yarn](https://yarnpkg.com/getting-started/install)
 Why [Next.js](https://www.youtube.com/watch?v=BILxV_vrZO0)?
 
 **React-specific help:**  
-**[The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react) Course** - free, ~2.5 hours, by Kent C Dodds (React course creator), not great for production level apps (most recommended)  
+[The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react) Course - free, ~2.5 hours, by Kent C Dodds (React course creator), not great for production level apps (most recommended)  
 [Udemy](https://www.udemy.com/course/modern-react-bootcamp/?ranMID=39197&ranEAID=CuIbQrBnhiw&ranSiteID=CuIbQrBnhiw-n0iNaXmXEhylgancIU43bQ&LSNPUBID=CuIbQrBnhiw&utm_source=aff-campaign&utm_medium=udemyads) Course - $$, popular course, long  
 [Udacity](https://www.udacity.com/course/react-nanodegree--nd019?irclickid=zbMU-rQzSxyIRXz1f61h2xz3UkGXBSWgwxc4QU0&irgwc=1&utm_source=affiliate&utm_medium=&aff=2339070&utm_term=&utm_campaign=__&utm_content=&adid=786224) Course - $$$$, premium, check-ins, projects, feedback  
 React [folder structure](https://www.robinwieruch.de/react-folder-structure/)  
@@ -17,6 +17,6 @@ React [folder structure](https://www.robinwieruch.de/react-folder-structure/)
 
 **Other helpful links:**  
 [Git Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) - tips on branch management in teams  
-Node version management([NVM](https://github.com/nvm-sh/nvm))  
+Node version management ([NVM](https://github.com/nvm-sh/nvm))  
 [whiteboarding](https://excalidraw.com/) space  
 [replit](https://replit.com/~)
