@@ -6,8 +6,8 @@ const Cell: React.FC<{ isAlive: boolean; toggleIsAlive: () => void }> = ({
     toggleIsAlive();
   };
   return (
-    <div onClick={handleClick}>
-      <p className="bg-sky-900 text-center text-sky-300 h-8 w-8">
+    <div onMouseOver={handleClick}>
+      <p className="bg-sky-900 text-xl text-center text-sky-300 h-8 w-8">
         {isAlive ? "▇" : "-"}
       </p>
     </div>

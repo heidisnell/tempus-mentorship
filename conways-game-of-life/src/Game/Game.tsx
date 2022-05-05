@@ -3,8 +3,10 @@ import { Cell } from "../Cell";
 import * as _ from "lodash";
 import { getNextGeneration } from "./Game.util";
 
+const boardDimensions = 50;
+const generationLength = 300;
+
 type GameAction = {
-  // type: "toggle";
   type: string;
   rowNum: number;
   colNum: number;
@@ -33,8 +35,8 @@ function reducer(state: boolean[][], action: GameAction) {
 }
 
 const Game: React.FC = () => {
-  const numRows = 20;
-  const numCols = 20;
+  const numRows = boardDimensions;
+  const numCols = boardDimensions;
   let [generationNum, setGenerationNum] = useState(0);
 
   const [generation, dispatch] = useReducer(
@@ -51,7 +53,7 @@ const Game: React.FC = () => {
       setGenerationNum(generationNum + 1);
 
       dispatch({ type: "refresh", rowNum: 0, colNum: 0 });
-    }, 1000);
+    }, generationLength);
 
     return () => clearInterval(interval);
   });
