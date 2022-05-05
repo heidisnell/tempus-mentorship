@@ -51,7 +51,6 @@ const Game: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setGenerationNum(generationNum + 1);
-
       dispatch({ type: "refresh", rowNum: 0, colNum: 0 });
     }, generationLength);
 
