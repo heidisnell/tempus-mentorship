@@ -3,7 +3,7 @@ import { Cell } from "../Cell";
 import * as _ from "lodash";
 import { getNextGeneration } from "./Game.util";
 
-const boardDimensions = 60;
+const boardDimensions = 50;
 const generationLength = 300;
 
 type GameAction = {
