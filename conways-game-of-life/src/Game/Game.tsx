@@ -3,8 +3,8 @@ import { Cell } from "../Cell";
 import * as _ from "lodash";
 import { getNextGeneration } from "./Game.util";
 
-const boardDimensions = 22;
-const generationLength = 500;
+const boardDimensions = 60;
+const generationLength = 300;
 
 type GameAction = {
   type: string;
