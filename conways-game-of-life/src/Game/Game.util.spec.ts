@@ -7,12 +7,27 @@ describe("#getNextGeneration", () => {
       [false, false],
       [false, false],
     ];
-    // calling the function
+    // call the function
     const result = getNextGeneration(currentGeneration);
-    // verifying the function works
+    // verify the function works
     expect(result).toStrictEqual([
       [false, false],
       [false, false],
+    ]);
+  });
+
+  it("should return true", () => {
+    // setup
+    const currentGeneration = [
+      [true, false],
+      [true, true],
+    ];
+    // call the function
+    const result = getNextGeneration(currentGeneration);
+    // verify
+    expect(result).toStrictEqual([
+      [true, true],
+      [true, true],
     ]);
   });
 });
