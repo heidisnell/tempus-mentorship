@@ -24,7 +24,7 @@ describe("#getNextGeneration", () => {
     ];
     // call the function
     const result = getNextGeneration(currentGeneration);
-    // verify the function works
+    // verify
     expect(result).toStrictEqual([
       [false, false],
       [false, false],
@@ -32,14 +32,11 @@ describe("#getNextGeneration", () => {
   });
 
   it("should return true", () => {
-    // setup
     const currentGeneration = [
       [true, false],
       [true, true],
     ];
-    // call the function
     const result = getNextGeneration(currentGeneration);
-    // verify
     expect(result).toStrictEqual([
       [true, true],
       [true, true],
@@ -47,15 +44,12 @@ describe("#getNextGeneration", () => {
   });
 
   it("should kill inner cells", () => {
-    // setup
     const currentGeneration = [
       [true, true, true],
       [true, true, true],
       [true, true, true],
     ];
-    // call the function
     const result = getNextGeneration(currentGeneration);
-    // verify
     expect(result).toStrictEqual([
       [true, false, true],
       [false, false, false],
