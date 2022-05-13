@@ -31,9 +31,9 @@ function reducer(state: boolean[][], action: GameAction) {
   }
 }
 
-const Game: React.FC<{ dimension: number; generationTime: number }> = ({
+const Game: React.FC<{ dimension: number; lifespan: number }> = ({
   dimension,
-  generationTime,
+  lifespan,
 }) => {
   const numRows = dimension;
   const numCols = dimension;
@@ -52,7 +52,7 @@ const Game: React.FC<{ dimension: number; generationTime: number }> = ({
     const interval = setInterval(() => {
       setGenerationNum(generationNum + 1);
       dispatch({ type: "refresh", rowNum: 0, colNum: 0 });
-    }, generationTime);
+    }, lifespan);
 
     return () => clearInterval(interval);
   });
