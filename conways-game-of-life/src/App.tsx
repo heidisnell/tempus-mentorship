@@ -2,26 +2,26 @@ import { useState } from "react";
 import { Game } from "./Game";
 
 function App() {
-  let [generationTime, setGenerationTime] = useState(300);
+  let [lifespan, setLifespan] = useState(200);
 
-  const generationTimeOnChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setGenerationTime(parseInt(event.target.value));
+  const lifespanOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLifespan(parseInt(event.target.value));
   };
 
   return (
     <div className="App">
-      <Game dimension={30} generationTime={generationTime}></Game>
-      <label htmlFor=""></label>
-      <input
-        type="range"
-        name="generationTime"
-        id="generationTime"
-        min={0}
-        max={1000}
-        onChange={generationTimeOnChange}
-      />
+      <Game dimension={30} lifespan={lifespan}></Game>
+      <label>
+        Lifespan{" "}
+        <input
+          type="range"
+          name="lifespan"
+          id="lifespan"
+          min={1}
+          max={300}
+          onChange={lifespanOnChange}
+        />
+      </label>
     </div>
   );
 }
