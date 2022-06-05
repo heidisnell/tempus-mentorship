@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { Cell } from "../Cell";
-import * as _ from "lodash";
+import _ from "lodash";
 import { getNextGeneration } from "./Game.util";
 
 type GameAction = {
@@ -39,6 +39,7 @@ const Game: React.FC<{ dimension: number; lifespan: number }> = ({
   const numCols = dimension;
   let [generationNum, setGenerationNum] = useState(0);
 
+  // creates next generation
   const [generation, dispatch] = useReducer(
     reducer,
     Array(numRows)
@@ -48,6 +49,7 @@ const Game: React.FC<{ dimension: number; lifespan: number }> = ({
       })
   );
 
+  // lifespan interval
   useEffect(() => {
     const interval = setInterval(() => {
       setGenerationNum(generationNum + 1);
